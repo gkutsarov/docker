@@ -34,4 +34,4 @@ jobs:
         run: docker build -t registry.hub.docker.com/grolfskin/httpd:v${{ vars.MY_VARIABLE }} .
 
       - name: Push Docker image
-        run: docker push registry.hub.docker.com/grolfskin/httpd:v${{ vars.MY_VARIABLE }} .
+        run: docker push registry.hub.docker.com/grolfskin/httpd:v${{ vars.MY_VARIABLE }}
