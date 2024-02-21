@@ -17,12 +17,6 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
-      - name: Extract Metadata for the Docker image
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: https://registry.hub.docker.com/:httpd
-
       - name: Login to Registry
         uses: docker/login-action@v3
         with:
@@ -37,7 +31,7 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v${{ env.MY_VARIABLE }} .
+        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v${{ vars.MY_VARIABLE }} .
 
       - name: Push Docker image
-        run: docker push registry.hub.docker.com/grolfskin/httpd:v${{ env.MY_VARIABLE }} .
+        run: docker push registry.hub.docker.com/grolfskin/httpd:v${{ vars.MY_VARIABLE }} .
