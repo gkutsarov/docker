@@ -31,7 +31,7 @@ jobs:
           password: tesFe001!!!!!!!
 
       - name: Build Docker image
-        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v($VERSION+1) .
+        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v{{ $github.run_attempt }} .
 
       - name: Push Docker image
-        run: docker push registry.hub.docker.com/grolfskin/httpd:v($VERSION+1)
+        run: docker push registry.hub.docker.com/grolfskin/httpd:v{{ $github.run_attempt }} .
