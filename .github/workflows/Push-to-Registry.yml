@@ -29,9 +29,7 @@ jobs:
           password: tesFe001!!!!!!!
 
       - name: Build Docker image
-        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v1 .
+        run: docker build -t registry.hub.docker.com/grolfskin/httpd:${{ secrets.IMAGE_VERSION }} .
 
       - name: Push Docker image
-        run: docker push registry.hub.docker.com/grolfskin/httpd:v1
-        with:
-          tags: ${{ steps.docker_meta.outputs.tags }}
+        run: docker push registry.hub.docker.com/grolfskin/httpd:(${{ secrets.IMAGE_VERSION }} + 1)
