@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-    
+
+env:
+  VERSION: 1 
 
 jobs:
   push_to_registry:
@@ -29,7 +31,7 @@ jobs:
           password: tesFe001!!!!!!!
 
       - name: Build Docker image
-        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v${{ env.VERSION }} .
+        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v$VERSION+1 .
 
       - name: Push Docker image
-        run: docker push registry.hub.docker.com/grolfskin/httpd:v${{ env.VERSION }}
+        run: docker push registry.hub.docker.com/grolfskin/httpd:v$VERSION+1
