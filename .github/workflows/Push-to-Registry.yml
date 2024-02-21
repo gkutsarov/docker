@@ -30,8 +30,14 @@ jobs:
           username: grolfskin
           password: tesFe001!!!!!!!
 
+      - name: Increment Variable
+        uses: action-pack/increment@v2
+        with:
+          name: 'MY_VARIABLE'
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+
       - name: Build Docker image
-        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v{{ $github.run_attempt }} .
+        run: docker build -t registry.hub.docker.com/grolfskin/httpd:v${{ env.MY_VARIABLE }} .
 
       - name: Push Docker image
-        run: docker push registry.hub.docker.com/grolfskin/httpd:v{{ $github.run_attempt }} .
+        run: docker push registry.hub.docker.com/grolfskin/httpd:v${{ env.MY_VARIABLE }} .
